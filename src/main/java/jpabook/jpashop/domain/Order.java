@@ -14,6 +14,9 @@ public class Order {
     @Column(name = "order_id", nullable = false)
     private Long id;
 
+    @OneToOne
+    @JoinColumn(name = "delivery_id")
+    private Delivery delivery;
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
@@ -25,6 +28,14 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
 
     public Member getMember() {
         return member;
